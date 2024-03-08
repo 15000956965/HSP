@@ -55,8 +55,9 @@ void Lab1_mainfunc() {
 	//通过SW1拨码选择轮询或者中断方式
 	while (1)
 	{
-		// mode_flag = SW1() ? 1 : 0; // 假设SW1()为高时使用中断，低时使用轮询
-		while (1)
+	mode_flag = SW1() ? 1 : 0; // 假设SW1()为高时使用中断，低时使用轮询
+	if (mode_flag == 0) { //轮询
+	while (1)
 	{
 		// lab1_var = 127;
 		state_pha = PHA2();
@@ -122,7 +123,16 @@ void Lab1_mainfunc() {
 		hsp_cat9555_seg7_hexadecimal(lab1_var);
 	}
 
-    // 蜂鸣器逻辑
+	}
+
+	else { //中断
+		Lab1_res_interrupt();
+	}
+	}
+
+
+
+	// 蜂鸣器逻辑
     	if ((lab1_var < 10) || (lab1_var > 50 && lab1_var < 80)) {
         // 调用蜂鸣器以1秒周期鸣叫0.02s的函数
 		
@@ -133,8 +143,6 @@ void Lab1_mainfunc() {
 
     // 更新显示（这需要您根据实际使用的显示设备进行实现）
 		// hsp_cat9555_seg7_hexadecimal(lab1_var);
-	}
-	
 	
 
 
