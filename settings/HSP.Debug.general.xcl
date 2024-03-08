@@ -1,0 +1,15 @@
+"D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\bin\armPROC.dll" 
+
+"D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\bin\armJET.dll" 
+
+"D:\Files\SJTU\second_second\engineering4-D\HSP\HSP_C4\HSP_C3\Debug\Exe\HSP.out" 
+
+--plugin="D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\bin\armLibSupportUniversal.dll" 
+
+--device_macro="D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm/config/debugger/GigaDevice/GD32F4xx.dmac" 
+
+--flash_loader="D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm/config/flashloader/GD/FlashGD32F470xG.board" 
+
+
+
+

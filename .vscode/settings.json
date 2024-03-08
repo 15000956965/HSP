@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "ex7.h": "c",
+        "hsp_timer.h": "c",
+        "lab1.h": "c",
+        "hsp_gpio.h": "c",
+        "systick.h": "c",
+        "hsp_cat9555.h": "c"
+    }
+}

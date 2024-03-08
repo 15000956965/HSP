@@ -1,0 +1,349 @@
+##IAR Ninja build file
+
+
+#Rules
+rule COMPILER_XCL
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\XclFileGenerator.exe" $xclcommand -f "$rspfile_name"
+  description = IAR_NEW_TOOL+++COMPILER_XCL+++$out
+  rspfile = $rspfile_name
+  rspfile_content = $flags
+
+rule INDEXER
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\SourceIndexer.exe" $flags
+  depfile = $out.dep
+  deps = gcc
+  description = IAR_NEW_TOOL+++INDEXER+++$out
+
+rule MAKEBROWSE
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\makeBrowseData.exe" $flags
+  description = IAR_NEW_TOOL+++MAKEBROWSE+++$out
+
+rule PDBLINK
+  command = "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\common\bin\PbdLink.exe" $flags
+  description = IAR_NEW_TOOL+++PDBLINK+++$out
+
+
+
+#Build steps
+build D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\Board\hsp_gpio.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\Board_7221520210927654578.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\Board\hsp_gpio.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\CMSIS\GD\GD32F4xx\Source\system_gd32f4xx.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\CMSIS_13545061835669826545.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\CMSIS\GD\GD32F4xx\Source\system_gd32f4xx.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_adc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_adc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_can.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_can.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_crc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_crc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_ctc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_ctc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dac.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dac.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dbg.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dbg.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dci.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dci.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dma.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dma.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_enet.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_enet.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_exmc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_exmc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_exti.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_exti.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_fmc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_fmc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_fwdgt.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_fwdgt.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_gpio.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_gpio.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_i2c.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_i2c.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_ipa.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_ipa.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_iref.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_iref.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_misc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_misc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_pmu.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_pmu.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_rcu.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_rcu.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_rtc.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_rtc.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_sdio.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_sdio.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_spi.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_spi.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_syscfg.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_syscfg.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_timer.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_timer.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_tli.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_tli.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_trng.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_trng.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_usart.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_usart.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_wwdgt.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\GD32F470_Peripherals_11143062579488607573.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_wwdgt.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\Main\gd32f4xx_it.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\Main_13238667732884069010.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\Main\gd32f4xx_it.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\Main\main.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\Main_13238667732884069010.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\Main\main.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.xcl : COMPILER_XCL 
+    flags = D$:\Iar.work\HSP\Main\systick.c -D NDEBUG -o D$:\Iar.work\HSP\Release\Obj\Main_13238667732884069010.dir --endian=little --cpu=Cortex-M3 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\inc\c\DLib_Config_Normal.h" -Oh --predef_macros D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.tmp
+    rspfile_name = D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.xcl.rsp
+    xclcommand = -source_file D$:\Iar.work\HSP\Main\systick.c -xcl_file D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.xcl -macro_file D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.2\arm\bin\iccarm.exe"
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.xcl | D$:\Iar.work\HSP\Board\hsp_gpio.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.xcl | D$:\Iar.work\HSP\CMSIS\GD\GD32F4xx\Source\system_gd32f4xx.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_adc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_can.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_crc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_ctc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dac.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dbg.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dci.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_dma.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_enet.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_exmc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_exti.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_fmc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_fwdgt.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_gpio.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_i2c.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_ipa.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_iref.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_misc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_pmu.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_rcu.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_rtc.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_sdio.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_spi.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_syscfg.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_timer.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_tli.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_trng.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_usart.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.xcl | D$:\Iar.work\HSP\GD32F4xx_standard_peripheral\Source\gd32f4xx_wwdgt.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.xcl | D$:\Iar.work\HSP\Main\gd32f4xx_it.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.xcl | D$:\Iar.work\HSP\Main\main.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.pbi : INDEXER D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.xcl | D$:\Iar.work\HSP\Main\systick.c
+    flags = -out=D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.pbi -f D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.xcl
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP.pbw : MAKEBROWSE D$:\Iar.work\HSP\Release\BrowseInfo\HSP.pbd
+    flags = D$:\Iar.work\HSP\Release\BrowseInfo\HSP.pbd -output D$:\Iar.work\HSP\Release\BrowseInfo\HSP.pbw
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part0.pbi : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part0.pbi D$:\Iar.work\HSP\Release\BrowseInfo\Board_7221520210927654578.dir\hsp_gpio.pbi D$:\Iar.work\HSP\Release\BrowseInfo\CMSIS_13545061835669826545.dir\system_gd32f4xx.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_adc.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_can.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_crc.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ctc.pbi
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part1.pbi : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part1.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dac.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dbg.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dci.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_dma.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_enet.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exmc.pbi
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part2.pbi : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part2.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_exti.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fmc.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_fwdgt.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_gpio.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_i2c.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_ipa.pbi
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part3.pbi : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part3.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_iref.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_misc.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_pmu.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rcu.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_rtc.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_sdio.pbi
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part4.pbi : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part4.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_spi.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_syscfg.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_timer.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_tli.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_trng.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_usart.pbi
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part5.pbi : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part5.pbi D$:\Iar.work\HSP\Release\BrowseInfo\GD32F470_Peripherals_11143062579488607573.dir\gd32f4xx_wwdgt.pbi D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\gd32f4xx_it.pbi D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\main.pbi D$:\Iar.work\HSP\Release\BrowseInfo\Main_13238667732884069010.dir\systick.pbi
+
+build D$:\Iar.work\HSP\Release\BrowseInfo\HSP.pbd : PDBLINK D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part0.pbi | D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part1.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part2.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part3.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part4.pbi $
+ D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part5.pbi
+    flags = -M D$:\Iar.work\HSP\Release\BrowseInfo\HSP.pbd D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part0.pbi D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part1.pbi D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part2.pbi D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part3.pbi D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part4.pbi D$:\Iar.work\HSP\Release\BrowseInfo\HSP_part5.pbi
+

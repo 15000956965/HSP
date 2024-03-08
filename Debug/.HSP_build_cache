@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BuildDb>
+    <Tool>
+        <Name>linker</Name>
+        <Parent>
+            <Path>D:\Files\SJTU\second_second\engineering4-D\HSP\HSP_C4\HSP_C3\Debug\Exe\HSP.out</Path>
+            <Output>
+                <Path>D:\Files\SJTU\second_second\engineering4-D\HSP\HSP_C4\HSP_C3\Debug\List\HSP.map</Path>
+            </Output>
+        </Parent>
+    </Tool>
+</BuildDb>
