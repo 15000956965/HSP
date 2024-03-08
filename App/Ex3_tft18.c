@@ -56,7 +56,7 @@ uint8_t Ex3_2_tft18_menu()
 	uint8_t i=0, ln=0;
     qesdir scroll = STILL;
   
-	hsp_spi_init();
+	hsp_spi_init(); //初始化SPI,SPI是指串行外设接口
 	hsp_tft18_init();
 	hsp_tft18_clear(BLACK);
 

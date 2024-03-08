@@ -1,6 +1,7 @@
 #include "hsp_liball.h"
 #include "Lab1.h"
 #include <stdbool.h>
+#include "HSP_TFT18.h"
 
 extern uint8_t RES_value; //extern是外部变量声明，表示该变量在别的文件中定义
 volatile uint8_t lab1_var;  //volatile是声明变量为易失性变量，表示该变量可能会被别的程序修改
@@ -38,13 +39,35 @@ void Lab1_res_interrupt()
 		if(RES_value != lab1_var)
 		{
 			lab1_var = RES_value;
-			// hsp_cat9555_seg7_decimal(lab1_var);
+			hsp_cat9555_seg7_hexadecimal(lab1_var);
 		}
 
 }
 
 
+void lab1_lcdshow(uint8_t lab1_var) { 
+
+	if ((lab1_var < 10) || (lab1_var > 50 && lab1_var < 80)){
+		hsp_tft18_clear(BLUE);
+		hsp_tft18_show_uint16_color(36, 4, lab1_var, YELLOW, BLUE);
+		// delay_1ms(20); //<10 or 50~80 蓝底黄字
+	}
+	else if (lab1_var >= 80){
+		hsp_tft18_clear(YELLOW);
+		hsp_tft18_show_uint16_color(36, 4, lab1_var, RED, YELLOW);
+		// delay_1ms(20); //>=80 黄底红字
+	}
+	else {
+		hsp_tft18_clear(BLACK);
+		hsp_tft18_show_uint16_color(36, 4, lab1_var, WHITE, BLACK);
+		// delay_1ms(10000); //10~50 黑底白字
+	}
+	
+}
+
 void Lab1_mainfunc() {
+	
+	
     uint8_t state_pha, state_phb;
 	uint8_t state_pha_t, state_phb_t;
 	uint8_t pulse_counter = 0;
@@ -119,7 +142,7 @@ void Lab1_mainfunc() {
 		if(!PUSH()) {
         lab1_var = 127;
    	 }
-		
+		lab1_lcdshow(lab1_var);
 		hsp_cat9555_seg7_hexadecimal(lab1_var);
 	}
 

@@ -88,12 +88,16 @@ void board_init()
 */
 void check_and_beep();
 
+
+
 int main(void)
 {
   	uint16_t i;
 	
 	board_init();
-	LCD_BL_ON();
+	// LCD_BL_ON();
+	hsp_spi_init();
+	hsp_tft18_init();
 
 	
 	// printf("\nHello SJTU HSP!\n\r");
@@ -149,8 +153,18 @@ int main(void)
 		//Ex2_3_segbarmux();
 		//Ex2_4_mems();
 		// Ex3_1_tft18_text();
-		//Ex3_2_tft18_menu();
+		// Ex3_2_tft18_menu();
 		// Ex3_3_bitmap();
+
+		
+		// lab1_lcdshow(8);
+		
+		
+
+
+
+
+
 		// Ex4_1_adc0();
 		//Ex4_2_adc1();
 		//Ex4_3_adc2();
