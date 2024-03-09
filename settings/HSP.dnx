@@ -21,8 +21,8 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <Jet>
-        <JetConnSerialNo>CMSIS-DAP v2:7&amp;1FBBEC8F&amp;0&amp;3</JetConnSerialNo>
-        <JetConnFoundProbes />
+        <JetConnSerialNo>CMSIS-DAP v2:00000080364A711C1732313231333535A5A5A5A597969908</JetConnSerialNo>
+        <JetConnFoundProbes>CMSIS-DAP v1:00000080364a711c1732313231333535a5a5a5a597969908:CMSIS-DAP v2:00000080364A711C1732313231333535A5A5A5A597969908:</JetConnFoundProbes>
         <PrevWtdReset>Software</PrevWtdReset>
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>1</LeaveRunning>
@@ -52,7 +52,7 @@
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>563673863</Checksum>
+        <Checksum>2560290676</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>

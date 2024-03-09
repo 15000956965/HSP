@@ -6,6 +6,7 @@
         "hsp_gpio.h": "c",
         "systick.h": "c",
         "hsp_cat9555.h": "c",
-        "ex3.h": "c"
+        "ex3.h": "c",
+        "hsp_mma8451.h": "c"
     }
 }

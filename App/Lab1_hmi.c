@@ -4,16 +4,17 @@
 #include "HSP_TFT18.h"
 
 #define DEBOUNCE_TIME 20 // 防抖时间设置为20ms
+#define DEFAULT_DEBOUNCE_TIME 20 // 默认的防抖时间，单位为毫秒
+#define FAST_ROTATION_THRESHOLD 100 // 快速旋转的时间阈值，单位为毫秒
+#define SHORT_DEBOUNCE_TIME 10 // 快速旋转时的短防抖时间，单位为毫秒
+#define LONG_DEBOUNCE_TIME 30 // 慢速旋转或静止时的长防抖时间，单位为毫秒
 
 extern uint32_t sys_tick_counter;
 extern uint8_t RES_value; //extern是外部变量声明，表示该变量在别的文件中定义
 volatile uint8_t lab1_var;  //volatile是声明变量为易失性变量，表示该变量可能会被别的程序修改
 extern volatile uint8_t mode_flag; // 0表示轮询，1表示中断
 
-#define DEFAULT_DEBOUNCE_TIME 20 // 默认的防抖时间，单位为毫秒
-#define FAST_ROTATION_THRESHOLD 100 // 快速旋转的时间阈值，单位为毫秒
-#define SHORT_DEBOUNCE_TIME 10 // 快速旋转时的短防抖时间，单位为毫秒
-#define LONG_DEBOUNCE_TIME 30 // 慢速旋转或静止时的长防抖时间，单位为毫秒
+
 uint32_t getCurrentTime() {
     return sys_tick_counter;
 }
@@ -33,9 +34,6 @@ void updateDebounceTime() {
 
     last_rotation_time = current_time; // 更新上次旋转事件的时间
 }
-
-
-
 
 void Lab1_res_polling()
 {
@@ -95,8 +93,6 @@ void Lab1_res_interrupt()
 }
 
 
-
-
 void lab1_lcdshow(uint8_t lab1_var) { 
 
 	if ((lab1_var < 10) || (lab1_var > 50 && lab1_var < 80)){
@@ -128,6 +124,7 @@ void Lab1_mainfunc() {
 
  	/* PHA2/PB14 interrupt enable */
 	rcu_periph_clock_enable(RCU_SYSCFG);
+
     nvic_irq_enable(EXTI10_15_IRQn, 2U, 0U);
     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN14);
     exti_init(EXTI_14, EXTI_INTERRUPT, EXTI_TRIG_RISING);
@@ -229,6 +226,8 @@ void Lab1_mainfunc() {
 			hsp_cat9555_seg7_hexadecimal(lab1_var);
 		}
 		
+
+		//中断的鸣叫部分
 		if ((lab1_var < 10) || (lab1_var > 50 && lab1_var < 80)) {
         // 调用蜂鸣器以1秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 1000)

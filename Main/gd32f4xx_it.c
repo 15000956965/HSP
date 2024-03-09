@@ -151,18 +151,34 @@ void SysTick_Handler(void)
 */
 void EXTI10_15_IRQHandler(void)
 {
-    if(RESET != exti_interrupt_flag_get(EXTI_14))
+    if(RESET != exti_interrupt_flag_get(EXTI_14)) //检查中断标志位,也就是PHA2()的电平
     {
-        if(RESET == PHB2())
+        if(RESET == PHB2()) //说明是正转 PHB2()为低电平
         {
             if (RES_value < 255)
-                RES_value++;
+                // RES_value++;
+                RES_value+=2;
         }
         else
         {
             if (RES_value > 0)
-                RES_value--;
+                // RES_value--;
+                RES_value-=2;
         }
     }
+    // else //PHA上升下降都能进入中断
+    // {
+    //     if(RESET == PHB2())
+    //     {
+    //         if (RES_value < 255)
+    //             RES_value++;
+    //     }
+    //     else
+    //     {
+    //         if (RES_value > 0)
+    //             RES_value--;
+    //     }
+    // }
+    
     exti_interrupt_flag_clear(EXTI_14);
 }
