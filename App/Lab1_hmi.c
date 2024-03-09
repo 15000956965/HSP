@@ -118,6 +118,7 @@ void Lab1_mainfunc() {
     uint8_t state_pha, state_phb;
 	uint8_t state_pha_t, state_phb_t;
 	uint32_t last_debounce_time = 0;
+	bool flag;
 	
 	state_pha = PHA2(),			state_phb = PHB2();
 	state_pha_t = state_pha,	state_phb_t = state_phb;
@@ -128,12 +129,16 @@ void Lab1_mainfunc() {
 	//PHA2/PB14中断使能
     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN14);
     exti_init(EXTI_14, EXTI_INTERRUPT, EXTI_TRIG_RISING);
+	// exti_init(EXTI_14, EXTI_INTERRUPT, EXTI_TRIG_BOTH); //BOTH有一定问题
+	// exti_init(EXTI_14, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
     exti_interrupt_flag_clear(EXTI_14);
 	//PHB2/PB13中断使能
 	syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN13);
 	exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
+	// exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_BOTH); //BOTH有一定问题
+	// exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_FALLING);
 	exti_interrupt_flag_clear(EXTI_13);
-
+	
 	//通过SW1拨码选择轮询或者中断方式
 	while (1)
 	{
@@ -197,22 +202,30 @@ void Lab1_mainfunc() {
         // 调用蜂鸣器以1秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 1000)
 			{
-			BUZZ_ON();
+				// BUZZ_ON();
+				if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
+				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 			if (sys_tick_counter >= 1020)
 			{
-				BUZZ_OFF();
+				// BUZZ_OFF();
 				sys_tick_counter = 20;
+				if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
+				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
 			}
 			}	
     	} else if (lab1_var >= 80) {
         // 调用蜂鸣器以0.2秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 200)
 			{
-			BUZZ_ON();
+			// BUZZ_ON();
+			if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
+				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 			if (sys_tick_counter >= 220)
 			{
-			BUZZ_OFF();
+			// BUZZ_OFF();
 			sys_tick_counter = 20;
+			if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
+				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
 			}
 			}
    		 }
@@ -236,22 +249,32 @@ void Lab1_mainfunc() {
         // 调用蜂鸣器以1秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 1000)
 			{
-			BUZZ_ON();
+				// BUZZ_ON();
+				if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
+				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 			if (sys_tick_counter >= 1020)
 			{
-				BUZZ_OFF();
+				// BUZZ_OFF();
 				sys_tick_counter = 20;
+				if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
+				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
 			}
 			}	
     	} else if (lab1_var >= 80) {
         // 调用蜂鸣器以0.2秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 2000)
 			{
-			BUZZ_ON();
+				// BUZZ_ON();
+				if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
+				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
+
 			if (sys_tick_counter >= 2020)
 			{
-			BUZZ_OFF();
+			// BUZZ_OFF();
 			sys_tick_counter = 20;
+			if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
+				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
+
 			}
 			}
    		 }
