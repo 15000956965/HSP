@@ -86,8 +86,6 @@ void board_init()
     \param[out] none
     \retval     none
 */
-void check_and_beep();
-
 
 
 int main(void)

@@ -3,10 +3,13 @@
 #include <stdbool.h>
 #include "HSP_TFT18.h"
 
+#define DEBOUNCE_TIME 20 // 防抖时间设置为20ms
+
 extern uint32_t sys_tick_counter;
 extern uint8_t RES_value; //extern是外部变量声明，表示该变量在别的文件中定义
 volatile uint8_t lab1_var;  //volatile是声明变量为易失性变量，表示该变量可能会被别的程序修改
 extern volatile uint8_t mode_flag; // 0表示轮询，1表示中断
+
 
 void Lab1_res_polling()
 {
@@ -92,7 +95,7 @@ void lab1_lcdshow(uint8_t lab1_var) {
 void Lab1_mainfunc() {
     uint8_t state_pha, state_phb;
 	uint8_t state_pha_t, state_phb_t;
-	// uint8_t pulse_counter = 0;
+	uint32_t last_debounce_time = 0;
 	
 	state_pha = PHA2(),			state_phb = PHB2();
 	state_pha_t = state_pha,	state_phb_t = state_phb;
@@ -112,59 +115,49 @@ void Lab1_mainfunc() {
 		
 		state_pha = PHA2();
 		state_phb = PHB2();
-		if(state_pha != state_pha_t)	// PHA2 changed
+		if (state_pha != state_pha_t || state_phb != state_phb_t)
 		{
-			if(SET == state_pha)
-			{
-				if(RESET == state_phb)	// 实测逻辑关系
-				{
-					lab1_var++;
-				}
-				else if(lab1_var>0)
-				{
-					lab1_var--;
-				}
+			if ((sys_tick_counter - last_debounce_time) > DEBOUNCE_TIME){
+				// 信号稳定后的处理逻辑
+                    if (state_pha != state_pha_t) {
+                        if (SET == state_pha) {
+                            if (RESET == state_phb) {
+                                lab1_var++;
+                            } else if (lab1_var > 0) {
+                                lab1_var--;
+                            }
+                        } else {
+                            if (SET == state_phb) {
+                                lab1_var++;
+                            } else if (lab1_var > 0) {
+                                lab1_var--;
+                            }
+                        }
+                        state_pha_t = state_pha;
+                    }
+
+                    if (state_phb != state_phb_t) {
+                        if (SET == state_phb) {
+                            if (RESET == state_pha) {
+                                lab1_var--;
+                            } else if (lab1_var > 0) {
+                                lab1_var++;
+                            }
+                        } else {
+                            if (SET == state_pha) {
+                                lab1_var--;
+                            } else if (lab1_var > 0) {
+                                lab1_var++;
+                            }
+                        }
+                        state_phb_t = state_phb;
+                    }
+
+
+                    last_debounce_time = sys_tick_counter;
+					state_pha_t = state_pha;
+					state_phb_t = state_phb;
 			}
-			else
-			{
-				if(SET == state_phb)
-				{
-					lab1_var++;
-				}
-				else if(lab1_var>0)
-				{
-					lab1_var--;
-				}
-			}
-			state_pha_t = state_pha;
-			state_phb_t = state_phb;
-		}
-		if (state_phb != state_phb_t)	// PHB2 changed
-		{
-			if(SET == state_phb)
-			{
-				if(RESET == state_pha)
-				{
-					lab1_var--;
-				}
-				else if(lab1_var>0)
-				{
-					lab1_var++;
-				}
-			}
-			else
-			{
-				if(SET == state_pha)
-				{
-					lab1_var--;
-				}
-				else if(lab1_var>0)
-				{
-					lab1_var++;
-				}
-			}
-			state_pha_t = state_pha;
-			state_phb_t = state_phb;
 		}
 		
 		lab1_lcdshow(lab1_var);
