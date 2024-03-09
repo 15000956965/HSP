@@ -10,6 +10,32 @@ extern uint8_t RES_value; //extern是外部变量声明，表示该变量在别�
 volatile uint8_t lab1_var;  //volatile是声明变量为易失性变量，表示该变量可能会被别的程序修改
 extern volatile uint8_t mode_flag; // 0表示轮询，1表示中断
 
+#define DEFAULT_DEBOUNCE_TIME 20 // 默认的防抖时间，单位为毫秒
+#define FAST_ROTATION_THRESHOLD 100 // 快速旋转的时间阈值，单位为毫秒
+#define SHORT_DEBOUNCE_TIME 10 // 快速旋转时的短防抖时间，单位为毫秒
+#define LONG_DEBOUNCE_TIME 30 // 慢速旋转或静止时的长防抖时间，单位为毫秒
+uint32_t getCurrentTime() {
+    return sys_tick_counter;
+}
+volatile uint32_t last_rotation_time = 0; // 上次旋转事件的时间
+uint32_t debounce_time = DEFAULT_DEBOUNCE_TIME; // 动态防抖时间，初始值为默认值
+
+void updateDebounceTime() {
+    uint32_t current_time = getCurrentTime();
+    uint32_t time_interval = current_time - last_rotation_time;
+
+    // 根据旋转速度调整防抖时间
+    if (time_interval < FAST_ROTATION_THRESHOLD) {
+        debounce_time = SHORT_DEBOUNCE_TIME; // 快速旋转时使用更短的防抖时间
+    } else {
+        debounce_time = LONG_DEBOUNCE_TIME; // 慢速旋转或静止时使用更长的防抖时间
+    }
+
+    last_rotation_time = current_time; // 更新上次旋转事件的时间
+}
+
+
+
 
 void Lab1_res_polling()
 {
@@ -117,8 +143,10 @@ void Lab1_mainfunc() {
 		state_phb = PHB2();
 		if (state_pha != state_pha_t || state_phb != state_phb_t)
 		{
-			if ((sys_tick_counter - last_debounce_time) > DEBOUNCE_TIME){
-				// 信号稳定后的处理逻辑
+			if ((getCurrentTime() - last_debounce_time) > debounce_time){
+				// 更新最后的防抖时间
+                    last_debounce_time = getCurrentTime();
+
                     if (state_pha != state_pha_t) {
                         if (SET == state_pha) {
                             if (RESET == state_phb) {
@@ -154,9 +182,10 @@ void Lab1_mainfunc() {
                     }
 
 
-                    last_debounce_time = sys_tick_counter;
-					state_pha_t = state_pha;
-					state_phb_t = state_phb;
+                    // last_debounce_time = sys_tick_counter;
+					updateDebounceTime();
+					// state_pha_t = state_pha;
+					// state_phb_t = state_phb;
 			}
 		}
 		
