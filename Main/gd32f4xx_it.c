@@ -156,29 +156,32 @@ void EXTI10_15_IRQHandler(void)
         if(RESET == PHB2()) //说明是正转 PHB2()为低电平
         {
             if (RES_value < 255)
-                // RES_value++;
-                RES_value+=2;
+                RES_value++;
+                // RES_value+=2;
         }
         else
         {
             if (RES_value > 0)
-                // RES_value--;
-                RES_value-=2;
+                RES_value--;
+                // RES_value-=2;
         }
     }
-    // else //PHA上升下降都能进入中断
-    // {
-    //     if(RESET == PHB2())
-    //     {
-    //         if (RES_value < 255)
-    //             RES_value++;
-    //     }
-    //     else
-    //     {
-    //         if (RES_value > 0)
-    //             RES_value--;
-    //     }
-    // }
+    if (RESET != exti_interrupt_flag_get(EXTI_13)) //检查中断标志位,也就是PHB2()的电平
+    {
+        if(SET == PHA2()) //说明是正转 PHA2()为高电平
+        {
+            if (RES_value < 255)
+                RES_value++;
+                // RES_value+=2;
+        }
+        else
+        {
+            if (RES_value > 0)
+                RES_value--;
+                // RES_value-=2;
+        }
+    }
     
     exti_interrupt_flag_clear(EXTI_14);
+    exti_interrupt_flag_clear(EXTI_13);
 }

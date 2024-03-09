@@ -124,11 +124,15 @@ void Lab1_mainfunc() {
 
  	/* PHA2/PB14 interrupt enable */
 	rcu_periph_clock_enable(RCU_SYSCFG);
-
     nvic_irq_enable(EXTI10_15_IRQn, 2U, 0U);
+	//PHA2/PB14中断使能
     syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN14);
     exti_init(EXTI_14, EXTI_INTERRUPT, EXTI_TRIG_RISING);
     exti_interrupt_flag_clear(EXTI_14);
+	//PHB2/PB13中断使能
+	syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN13);
+	exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
+	exti_interrupt_flag_clear(EXTI_13);
 
 	//通过SW1拨码选择轮询或者中断方式
 	while (1)
