@@ -21,18 +21,18 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <Jet>
+        <JetConnSerialNo>CMSIS-DAP v2:7&amp;1FBBEC8F&amp;0&amp;3</JetConnSerialNo>
+        <JetConnFoundProbes />
+        <PrevWtdReset>Software</PrevWtdReset>
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>1</LeaveRunning>
         <MultiCoreRunAll>0</MultiCoreRunAll>
         <CpuHaltOnBreakpointSet>0</CpuHaltOnBreakpointSet>
         <OnlineReset>Software</OnlineReset>
-        <JetConnSerialNo>CMSIS-DAP v2:7&amp;1FBBEC8F&amp;0&amp;3</JetConnSerialNo>
-        <JetConnFoundProbes />
-        <PrevWtdReset>Software</PrevWtdReset>
     </Jet>
     <PlDriver>
-        <MemConfigValue>D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\config\debugger\GD\GD32F470xG.ddf</MemConfigValue>
         <FirstRun>0</FirstRun>
+        <MemConfigValue>D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\config\debugger\GD\GD32F470xG.ddf</MemConfigValue>
     </PlDriver>
     <SWOManager>
         <SamplingDivider>8192</SamplingDivider>

@@ -220,29 +220,3 @@ int main(void)
     }
 }
 
-
-void check_and_beep() {
-    static uint32_t last_beep_time = 0;
-    static bool is_beeping = false;
-    static uint32_t beep_start_time = 0;
-
-    uint32_t beep_interval_ms = 1000; // 默认鸣叫间隔
-
-    if ((lab1_var < 10) || (lab1_var > 50 && lab1_var < 80)) {
-        beep_interval_ms = 1000; // 每1秒鸣叫
-    } else if (lab1_var >= 80) {
-        beep_interval_ms = 200; // 每0.2秒鸣叫
-    }
-
-    if (!is_beeping && sys_tick_counter - last_beep_time >= beep_interval_ms) {
-        BUZZ_ON();
-        beep_start_time = sys_tick_counter;
-        is_beeping = true;
-    }
-    if (is_beeping && sys_tick_counter - beep_start_time >= 20) {
-        BUZZ_OFF();
-        last_beep_time = sys_tick_counter;
-        is_beeping = false;
-    }
-}
-
