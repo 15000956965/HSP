@@ -33,7 +33,6 @@ void hsp_cat9555_seg7_decimal(uint16_t value)
     buffer_write[0] = 0xFF;
     buffer_write[1] = 0xFF;
     hsp_i2c_write_2byte(buffer_write, write_address);
-	while(delay--) {}
 	SEG7_ON();
     buffer_write[0] = (seg7_table[(value%100)/10] & 0xFFU);
     buffer_write[1] = (seg7_table[value%10]&0xFFU);
@@ -51,14 +50,49 @@ void hsp_cat9555_seg7_hexadecimal(uint16_t value)
     buffer_write[0] = 0xFF;
     buffer_write[1] = 0xFF;
     hsp_i2c_write_2byte(buffer_write, write_address);
-	while(delay--) {}
 	SEG7_ON();
     buffer_write[0] = (seg7_table[(value%0x100)/0x10] & 0xFFU);
     buffer_write[1] = (seg7_table[value%0x10]&0xFFU);
     hsp_i2c_write_2byte(buffer_write, write_address);
 }
 
-void hsp_cat9555_ledbar(uint16_t value) //用于控制LED灯条
+void hsp_cat9555_seg7_hexadecimal_1(uint16_t value)
+{
+    uint8_t write_address;
+    uint8_t buffer_write[2];
+	uint16_t delay = 20;
+    
+	//SEG7_ON();
+    write_address = 0x02U;
+    buffer_write[0] = 0xFF;
+    buffer_write[1] = 0xFF;
+    hsp_i2c_write_2byte(buffer_write, write_address);
+	
+	SEG7_ON();
+    buffer_write[0] = (seg7_table[(value%0x100)/0x10] & 0xFEU);
+    buffer_write[1] = (seg7_table[value%0x10]&0xFFU);
+    hsp_i2c_write_2byte(buffer_write, write_address);
+}
+
+void hsp_cat9555_seg7_hexadecimal_2(uint16_t value)
+{
+    uint8_t write_address;
+    uint8_t buffer_write[2];
+	uint16_t delay = 20;
+    
+	//SEG7_ON();
+    write_address = 0x02U;
+    buffer_write[0] = 0xFF;
+    buffer_write[1] = 0xFF;
+    hsp_i2c_write_2byte(buffer_write, write_address);
+	while(delay--) {}
+	SEG7_ON();
+    buffer_write[0] = (seg7_table[(value%0x100)/0x10] & 0xFFU);
+    buffer_write[1] = (seg7_table[value%0x10]&0xFEU);
+    hsp_i2c_write_2byte(buffer_write, write_address);
+}
+
+void hsp_cat9555_ledbar(uint16_t value)
 {
     uint8_t write_address;
     uint8_t buffer_write[2];

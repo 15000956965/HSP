@@ -13,6 +13,10 @@
 void hsp_cat9555_init();
 void hsp_cat9555_seg7_decimal(uint16_t value);
 void hsp_cat9555_seg7_hexadecimal(uint16_t value);
+void hsp_cat9555_seg7_hexadecimal_1(uint16_t value);
+void hsp_cat9555_seg7_hexadecimal_2(uint16_t value);
 void hsp_cat9555_ledbar(uint16_t value);
+
+
 
 #endif
