@@ -202,12 +202,12 @@ void Lab1_mainfunc() {
         // 调用蜂鸣器以1秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 1000)
 			{
-				// BUZZ_ON();
+				BUZZ_ON();
 				if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
 				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 			if (sys_tick_counter >= 1020)
 			{
-				// BUZZ_OFF();
+				BUZZ_OFF();
 				sys_tick_counter = 20;
 				if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
 				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
@@ -217,12 +217,12 @@ void Lab1_mainfunc() {
         // 调用蜂鸣器以0.2秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 200)
 			{
-			// BUZZ_ON();
+			BUZZ_ON();
 			if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
 				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 			if (sys_tick_counter >= 220)
 			{
-			// BUZZ_OFF();
+			BUZZ_OFF();
 			sys_tick_counter = 20;
 			if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
 				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
@@ -249,12 +249,12 @@ void Lab1_mainfunc() {
         // 调用蜂鸣器以1秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 1000)
 			{
-				// BUZZ_ON();
+				BUZZ_ON();
 				if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
 				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 			if (sys_tick_counter >= 1020)
 			{
-				// BUZZ_OFF();
+				BUZZ_OFF();
 				sys_tick_counter = 20;
 				if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
 				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
@@ -264,13 +264,13 @@ void Lab1_mainfunc() {
         // 调用蜂鸣器以0.2秒周期鸣叫0.02s的函数
 			if (sys_tick_counter >= 2000)
 			{
-				// BUZZ_ON();
+				BUZZ_ON();
 				if(flag) hsp_cat9555_seg7_hexadecimal_1(lab1_var);
 				else hsp_cat9555_seg7_hexadecimal_2(lab1_var);
 
 			if (sys_tick_counter >= 2020)
 			{
-			// BUZZ_OFF();
+			BUZZ_OFF();
 			sys_tick_counter = 20;
 			if(flag) {hsp_cat9555_seg7_hexadecimal_1(lab1_var);flag = false;}
 				else {hsp_cat9555_seg7_hexadecimal_2(lab1_var);flag = true;}
