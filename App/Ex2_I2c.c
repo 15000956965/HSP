@@ -2,6 +2,8 @@
 #include "Ex2.h"
 #include "systick.h"
 
+int16_t acc_x=0, acc_y=0, acc_z=0;
+
 void Ex2_1_seg7()
 {
 	uint16_t i = 0;
@@ -76,7 +78,7 @@ void Ex2_4_mems()
 {
 	uint8_t accl_data[8], temp1;
 	uint16_t wx,wy,wz;
-	int16_t acc_x=0, acc_y=0, acc_z=0;
+	// int16_t acc_x=0, acc_y=0, acc_z=0;
 	uint8_t x1,x2,y1,y2,z1,z2;
 
 	// initialize LCD

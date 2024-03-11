@@ -149,22 +149,16 @@ int main(void)
 		// Ex2_1_seg7();
 		// Ex2_2_ledbar();
 		//Ex2_3_segbarmux();
-		//Ex2_4_mems();
+		// Ex2_4_mems();
 		// Ex3_1_tft18_text();
 		// Ex3_2_tft18_menu();
 		// Ex3_3_bitmap();
 
 		
 		// lab1_lcdshow(8);
-		
-		
-
-
-
-
 
 		// Ex4_1_adc0();
-		//Ex4_2_adc1();
+		// Ex4_2_adc1();
 		//Ex4_3_adc2();
 		//Ex4_4_adc01();
 		//Ex4_5_adc012();

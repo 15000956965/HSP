@@ -48,9 +48,9 @@ void Ex4_1_adc0(void)
 		hsp_tft18_show_uint16(8, 2, adc_raw_data[2]);	// Vtemp
 		hsp_tft18_show_uint16(8, 3, adc_raw_data[3]);	// Vrtc
 		
-		battery_main	= (adc_raw_data[0]*5.016*3.3/4096);		// in unit of Volt
-		potentiometer	= (adc_raw_data[1]*3.3/4096);			// in unit of Volt
-		temperature		= (1.42-adc_raw_data[2]*3.3/4096)*1000/4.35+25;		// in unit of degree
+		battery_main	= (adc_raw_data[0]*5.016*3.3/4096);		// in unit of Volt 电池电压 
+		potentiometer	= (adc_raw_data[1]*3.3/4096);			// in unit of Volt potentiometer是电位器电压
+		temperature		= (1.42-adc_raw_data[2]*3.3/4096)*1000/4.35+25;		// in unit of degree 
         battery_rtc		= (adc_raw_data[3]*4*3.3/4096);			// in unit of Volt
 		
 		sprintf(str_line, "-> %0.2fV", battery_main);
