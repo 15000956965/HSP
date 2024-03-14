@@ -11,10 +11,37 @@
 
 数据测试与对比分析
 
-# 实现的部分及说明
+# 实现的部分
 1. 采集信号 并且使用低通滤波+窗口的方式进行处理 已经能够实现一定精度的计步
 2. 简单UI的一部分 目前能够实现的
-   > 刷入后reset后 显示“Press to start!” 按下PUSH按钮后进入计步界面（黑白 三个加速度值+步数）
+   - 刷入后reset后 显示“Press to start!” 按下PUSH按钮后进入计步界面（黑白 三个加速度值+步数）
+   - 进入计步页面后，当步数为0时，再次按下PUSH回退到上一步主界面。
+   
+# 说明
+1. 主要功能的实现放在Ex2_l2c.c中，包括
+   ```c
+   void Ex2_4_mems() //在主函数中启用 计步依托于此
+   void low_pass_filter() // 低通滤波函数，通过对一定数量的连续样本取平均来实现
+   void add_to_window() '''将新的加速度数据加入窗口
+   窗口化处理涉及在一段时间内收集数据，然后对这批数据作为一个整体进行分析。'''
+   bool detect_step() //判断是否移动了一步
+   void display_results() //UI界面显示 有待完善
+   ```
+
+2. main函数中启用了
+   ```c
+   menu_id = hsp_menu_loop();
+   if(3 == menu_id)		// MMA8451 gradienter
+	{
+		Ex2_4_mems();
+	}
+   ```
+3. ./APP/00_MENU.c中更改了
+   ```c
+   uint8_t hsp_menu_loop(void)
+   ```
+   从而实现UI的一部分功能
+
 
 # todo
 1. 分析不同运动状态下加速度信号的特征
