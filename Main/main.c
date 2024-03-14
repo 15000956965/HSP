@@ -101,7 +101,7 @@ int main(void)
 	// printf("\nHello SJTU HSP!\n\r");
 	
     while(1) {
-//		menu_id = hsp_menu_loop();
+		menu_id = hsp_menu_loop();
 //		
 //		if(0 == menu_id)		// GPIO keys and leds
 //		{
@@ -115,10 +115,10 @@ int main(void)
 //		{
 //			Ex2_2_ledbar();
 //		}
-//		if(3 == menu_id)		// MMA8451 gradienter
-//		{
-//			Ex2_4_mems();
-//		}
+		if(3 == menu_id)		// MMA8451 gradienter
+		{
+			Ex2_4_mems();
+		}
 //		if(4 == menu_id)		// bitmaps
 //		{
 //			Ex3_4_bitmap2();
@@ -174,29 +174,8 @@ int main(void)
 		// Lab1_res_interrupt();
 	  	//Lab3_test();
 	  	//Lab4_test();
-		Lab1_mainfunc();
-		// 在main.c的主循环中
-		// if(mode_flag == 0) {
-		// 	Lab1_res_polling();
-		// } else {
-		// 	// 确保中断已经被配置，这通常只需要做一次
-		// 	Lab1_res_interrupt(); // 这个不是在这里调用，而是你确保中断配置好，并让ISR处理
-		// }
-
-		// if(mode_flag == 0) {
-
-		// Lab1_res_polling();
-		// Ex1_1_led();
-			
-
-
-		// } else {
-		// 	// 确保中断已经被配置，这通常只需要做一次
-		// 	Lab1_res_interrupt(); // 这个不是在这里调用，而是你确保中断配置好，并让ISR处理
-		// }
-		// hsp_cat9555_seg7_hexadecimal(lab1_var);
-
-
+		// Lab1_mainfunc();
+		
 
 
 		// Project_LFR(); 

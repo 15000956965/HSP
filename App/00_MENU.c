@@ -94,7 +94,8 @@ uint8_t menu_item0[8][20]=
 	"1.BasicIO(HMI)",
 	"2.ADC(Sensors)",
 	"3.I2C(Bar/SEG)",
-	"4.I2C(MMA8451)",
+	// "4.I2C(MMA8451)",
+    "Press to start!",
 	"5.LCD(Bitmaps)",
 	"6.LCD(GIFdemo)",
 	"7.RealTimeCloc",
@@ -103,95 +104,96 @@ uint8_t menu_item0[8][20]=
 
 uint8_t hsp_menu_loop(void)
 {
-    uint8_t ItemNumber=0;
-    uint8_t CmdIdx=0, CmdOk=0;
-    uint8_t StatusA, StatusB;
-    uint8_t tStatusA, tStatusB;
+    uint8_t ItemNumber=3;
+    // uint8_t CmdIdx=0, CmdOk=0;
+    // uint8_t StatusA, StatusB;
+    // uint8_t tStatusA, tStatusB;
     //QESDir Scroll;
 
-	Ex3_3_bitmap();
-	delay_1ms(1500);
+	// Ex3_3_bitmap();
+	// delay_1ms(1500);
 
 	// initialize LCD
 	hsp_spi_init();
 	hsp_tft18_init();
 	hsp_tft18_clear(BLACK);
     
-    hsp_tft18_show_str(32, 0, menu_item0[0]);
-    hsp_tft18_show_str(32, 1, menu_item0[1]);
-    hsp_tft18_show_str(32, 2, menu_item0[2]);
+    // hsp_tft18_show_str(32, 0, menu_item0[0]);
+    // hsp_tft18_show_str(32, 1, menu_item0[1]);
+    // hsp_tft18_show_str(32, 2, menu_item0[2]);
     hsp_tft18_show_str(32, 3, menu_item0[3]);
-    hsp_tft18_show_str(32, 4, menu_item0[4]);
-    hsp_tft18_show_str(32, 5, menu_item0[5]);
-    hsp_tft18_show_str(32, 6, menu_item0[6]);
-    hsp_tft18_show_str(32, 7, menu_item0[7]);
+    // hsp_tft18_show_str(32, 4, menu_item0[4]);
+    // hsp_tft18_show_str(32, 5, menu_item0[5]);
+    // hsp_tft18_show_str(32, 6, menu_item0[6]);
+    // hsp_tft18_show_str(32, 7, menu_item0[7]);
     
     show_menu_cursor(ItemNumber, WHITE);
-    Scroll = keySTILL;
+    // Scroll = keySTILL;
 
-    StatusA = PHA2();   StatusB = PHB2();
-    tStatusA = StatusA; tStatusB = StatusB;
+    // StatusA = PHA2();   StatusB = PHB2();
+    // tStatusA = StatusA; tStatusB = StatusB;
     
-    while (1)
-    {
-        StatusA = PHA2();   StatusB = PHB2();
-        if ((tStatusA==StatusA) || (RESET==StatusA))
-        {
-            Scroll = keySTILL;
-            if (!S1())
-            {
-                delay_1ms(2);
-                if (!S1())
-                    Scroll = keyUP;
-                while(!S1());
-            }
-            if (!S2())
-            {
-                delay_1ms(2);
-                if (!S2())
-                    Scroll = keyDOWN;
-                while(!S2());
-            }
-        }
-        else
-        {
-            if (RESET == StatusB)
-                Scroll = keyDOWN;
-            if (SET == StatusB)
-                Scroll = keyUP;
-        }
+    // while (1)
+    // {
+    //     StatusA = PHA2();   StatusB = PHB2();
+    //     if ((tStatusA==StatusA) || (RESET==StatusA))
+    //     {
+    //         Scroll = keySTILL;
+    //         if (!S1())
+    //         {
+    //             delay_1ms(2);
+    //             if (!S1())
+    //                 Scroll = keyUP;
+    //             while(!S1());
+    //         }
+    //         if (!S2())
+    //         {
+    //             delay_1ms(2);
+    //             if (!S2())
+    //                 Scroll = keyDOWN;
+    //             while(!S2());
+    //         }
+    //     }
+    //     else
+    //     {
+    //         if (RESET == StatusB)
+    //             Scroll = keyDOWN;
+    //         if (SET == StatusB)
+    //             Scroll = keyUP;
+    //     }
         
-        if (keyUP == Scroll)    // cursor move up
-        {
-            if (ItemNumber>0)
-            {
-                show_menu_cursor(ItemNumber--, BLACK);
-            }
-            else if (!SW4())
-            {
-                BUZZ_ON();  delay_1ms(1); BUZZ_OFF();  delay_1ms(5); 
-            }
-            if (!SW4()) { BUZZ_ON();  delay_1ms(1); BUZZ_OFF(); }
-            show_menu_cursor(ItemNumber, WHITE);
-            //Scroll = keySTILL;
-        }
-        if (keyDOWN == Scroll)    // cursor move down
-        {
-            if (ItemNumber<7)
-            {
-                show_menu_cursor(ItemNumber++, BLACK);
-            }
-            else if (!SW4())
-            {
-                BUZZ_ON();  delay_1ms(1); BUZZ_OFF();  delay_1ms(5); 
-            }
-            if (!SW4()) { BUZZ_ON();  delay_1ms(1); BUZZ_OFF(); }
-            show_menu_cursor(ItemNumber, WHITE);
-            //Scroll = keySTILL;
-        }
-        tStatusA = StatusA; tStatusB = StatusB;
-        Scroll = keySTILL;
-        
+    //     if (keyUP == Scroll)    // cursor move up
+    //     {
+    //         if (ItemNumber>0)
+    //         {
+    //             show_menu_cursor(ItemNumber--, BLACK);
+    //         }
+    //         else if (!SW4())
+    //         {
+    //             BUZZ_ON();  delay_1ms(1); BUZZ_OFF();  delay_1ms(5); 
+    //         }
+    //         if (!SW4()) { BUZZ_ON();  delay_1ms(1); BUZZ_OFF(); }
+    //         show_menu_cursor(ItemNumber, WHITE);
+    //         //Scroll = keySTILL;
+    //     }
+    //     if (keyDOWN == Scroll)    // cursor move down
+    //     {
+    //         if (ItemNumber<7)
+    //         {
+    //             show_menu_cursor(ItemNumber++, BLACK);
+    //         }
+    //         else if (!SW4())
+    //         {
+    //             BUZZ_ON();  delay_1ms(1); BUZZ_OFF();  delay_1ms(5); 
+    //         }
+    //         if (!SW4()) { BUZZ_ON();  delay_1ms(1); BUZZ_OFF(); }
+    //         show_menu_cursor(ItemNumber, WHITE);
+    //         //Scroll = keySTILL;
+    //     }
+    //     tStatusA = StatusA; tStatusB = StatusB;
+    //     Scroll = keySTILL;
+    
+    while (1){
         if ((!PUSH()) || (!S3()))    // push button pressed        
         {
             delay_1ms(50);  // de-jitter
@@ -203,6 +205,7 @@ uint8_t hsp_menu_loop(void)
         }
     }
 }
+
 
 // MenuCursor16x16
 void show_menu_cursor(uint8_t ItemNumber, uint16_t color)
