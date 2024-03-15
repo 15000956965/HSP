@@ -21,18 +21,18 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <Jet>
-        <JetConnSerialNo>CMSIS-DAP v2:00000080364A711C1732313231333535A5A5A5A597969908</JetConnSerialNo>
-        <JetConnFoundProbes>CMSIS-DAP v1:00000080364a711c1732313231333535a5a5a5a597969908:CMSIS-DAP v2:00000080364A711C1732313231333535A5A5A5A597969908:</JetConnFoundProbes>
-        <PrevWtdReset>Software</PrevWtdReset>
         <OnlineReset>Software</OnlineReset>
         <DisableInterrupts>0</DisableInterrupts>
         <LeaveRunning>1</LeaveRunning>
         <MultiCoreRunAll>0</MultiCoreRunAll>
         <CpuHaltOnBreakpointSet>0</CpuHaltOnBreakpointSet>
+        <JetConnSerialNo>CMSIS-DAP v2:00000080364A711C1732313231333535A5A5A5A597969908</JetConnSerialNo>
+        <JetConnFoundProbes>CMSIS-DAP v1:00000080364a711c1732313231333535a5a5a5a597969908:CMSIS-DAP v2:00000080364A711C1732313231333535A5A5A5A597969908:</JetConnFoundProbes>
+        <PrevWtdReset>Software</PrevWtdReset>
     </Jet>
     <PlDriver>
-        <FirstRun>0</FirstRun>
         <MemConfigValue>D:\Program Files\IAR Systems\Embedded Workbench 9.2\arm\config\debugger\GD\GD32F470xG.ddf</MemConfigValue>
+        <FirstRun>0</FirstRun>
     </PlDriver>
     <SWOManager>
         <SamplingDivider>8192</SamplingDivider>
@@ -52,7 +52,7 @@
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
     <DebugChecksum>
-        <Checksum>3948728203</Checksum>
+        <Checksum>571382948</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>

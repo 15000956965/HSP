@@ -6,7 +6,7 @@
 int16_t acc_x=0, acc_y=0, acc_z=0;
 int16_t prev_acc_x = 0, prev_acc_y = 0, prev_acc_z = 0;
 volatile int step_count = 0;
-int16_t THRESHOLD = 3500;		
+int16_t THRESHOLD = 1500;		
 
 void Ex2_1_seg7()
 {
@@ -112,41 +112,35 @@ void add_to_window(int16_t x, int16_t y, int16_t z) {
 
 bool detect_step() {
     int16_t max_accx = 0, min_accx = 32767;
-	for (int i = 0; i < WINDOW_SIZE; ++i) {
-		// 分析X轴的变化
-		int16_t acc = window_buffer[i][0]; // 获取X轴加速度
+    int16_t max_accy = 0, min_accy = 32767;
+    int16_t max_accz = 0, min_accz = 32767;
 
-		// 更新最大最小加速度
-		if (acc > max_accx) max_accx = acc;
-		if (acc < min_accx) min_accx = acc;
-	}
-
-	int16_t max_accy = 0, min_accy = 32767;
-	for (int i = 0; i < WINDOW_SIZE; ++i) {
-		// 分析Y轴的变化
-		int16_t acc = window_buffer[i][1]; // 获取Y轴加速度
-
-		// 更新最大最小加速度
-		if (acc > max_accy) max_accy = acc;
-		if (acc < min_accy) min_accy = acc;
-	}
-	
-	int16_t max_accz = 0, min_accz = 32767;
+    // 遍历窗口中的数据，更新最大和最小加速度
     for (int i = 0; i < WINDOW_SIZE; ++i) {
-        // 分析Z轴的变化
-        int16_t acc = window_buffer[i][2]; // 获取Z轴加速度
-
-        // 更新最大最小加速度
-        if (acc > max_accz) max_accz = acc;
-        if (acc < min_accz) min_accz = acc;
+        if (window_buffer[i][0] > max_accx) max_accx = window_buffer[i][0];
+        if (window_buffer[i][0] < min_accx) min_accx = window_buffer[i][0];
+        if (window_buffer[i][1] > max_accy) max_accy = window_buffer[i][1];
+        if (window_buffer[i][1] < min_accy) min_accy = window_buffer[i][1];
+        if (window_buffer[i][2] > max_accz) max_accz = window_buffer[i][2];
+        if (window_buffer[i][2] < min_accz) min_accz = window_buffer[i][2];
     }
 
-    // 检测加速度变化是否超过阈值
-    if (max_accx - min_accx > THRESHOLD || 
-		max_accy - min_accy > THRESHOLD || 
-		max_accz - min_accz > THRESHOLD)
-		return true;
-	return false;	
+    // 计算三轴加速度变化的范围
+    int16_t delta_accx = max_accx - min_accx;
+    int16_t delta_accy = max_accy - min_accy;
+    int16_t delta_accz = max_accz - min_accz;
+
+    // 找出最大的加速度变化
+    int16_t max_delta = delta_accx;
+    if (delta_accy > max_delta) max_delta = delta_accy;
+    if (delta_accz > max_delta) max_delta = delta_accz;
+
+    // 检测最大的加速度变化是否超过阈值
+    if (max_delta > THRESHOLD) {
+        return true; // 步数增加
+    }
+    
+    return false; // 没有检测到步伐
 }
 
 //UI界面显示
