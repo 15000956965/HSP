@@ -6,7 +6,15 @@
 int16_t acc_x=0, acc_y=0, acc_z=0;
 int16_t prev_acc_x = 0, prev_acc_y = 0, prev_acc_z = 0;
 volatile int step_count = 0;
-int16_t THRESHOLD = 1500;		
+int16_t THRESHOLD = 750;		
+
+int16_t delta_accx = 0;
+int16_t delta_accy = 0;
+int16_t delta_accz = 0;
+int16_t max_delta = 0;
+extern volatile uint32_t sys_tick_counter;
+//添加一个是否增加了步数的标志，是则为5000，否则为0
+int16_t step_flag = 0;
 
 void Ex2_1_seg7()
 {
@@ -81,7 +89,7 @@ void Ex2_3_segbarmux()
 
 //低通滤波实现
 // 定义缓冲区大小
-#define FILTER_WINDOW_SIZE 10
+#define FILTER_WINDOW_SIZE 8
 int16_t filter_buffer[FILTER_WINDOW_SIZE] = {0};
 int filter_index = 0;
 
@@ -98,7 +106,7 @@ void low_pass_filter(int16_t *input, int16_t *output) {
     *output = sum / FILTER_WINDOW_SIZE;
 }
 
-#define WINDOW_SIZE 20
+#define WINDOW_SIZE 8
 int16_t window_buffer[WINDOW_SIZE][3]; // 存储X, Y, Z三轴数据
 int window_index = 0;
 
@@ -110,7 +118,13 @@ void add_to_window(int16_t x, int16_t y, int16_t z) {
     window_index = (window_index + 1) % WINDOW_SIZE;
 }
 
-bool detect_step() {
+#define MIN_STEP_INTERVAL 200 // 假设最短步伐时间为200ms
+
+bool step_detected = false; // 步伐检测标志
+bool step_upward = false;   // 步伐上升标志
+uint32_t last_step_time = 0; // 上一步的时间戳
+
+bool detect_step(uint32_t current_time) {
     int16_t max_accx = 0, min_accx = 32767;
     int16_t max_accy = 0, min_accy = 32767;
     int16_t max_accz = 0, min_accz = 32767;
@@ -126,21 +140,40 @@ bool detect_step() {
     }
 
     // 计算三轴加速度变化的范围
-    int16_t delta_accx = max_accx - min_accx;
-    int16_t delta_accy = max_accy - min_accy;
-    int16_t delta_accz = max_accz - min_accz;
+	delta_accx = max_accx - min_accx;
+	delta_accy = max_accy - min_accy;
+	delta_accz = max_accz - min_accz;
 
     // 找出最大的加速度变化
-    int16_t max_delta = delta_accx;
+	max_delta = delta_accx;
     if (delta_accy > max_delta) max_delta = delta_accy;
     if (delta_accz > max_delta) max_delta = delta_accz;
 
-    // 检测最大的加速度变化是否超过阈值
-    if (max_delta > THRESHOLD) {
-        return true; // 步数增加
+ 	if (max_delta > THRESHOLD) {
+        if (!step_upward) {
+            step_upward = true; // 标记为上升阶段
+        }
+    } else if (step_upward) {
+        step_upward = false; // 下降阶段
+        if (!step_detected && (current_time - last_step_time > MIN_STEP_INTERVAL)) {
+            step_detected = true; // 检测到步伐
+            last_step_time = current_time; // 更新时间戳
+            return true; // 步数增加
+        }
     }
+    // 如果没有检测到步伐或时间间隔过短，重置标志
+    if (current_time - last_step_time > MIN_STEP_INTERVAL) {
+        step_detected = false;
+    }
+    return false; // 保持步数不变
+
+
+    // // 检测最大的加速度变化是否超过阈值
+    // if (max_delta > THRESHOLD) {
+    //     return true; // 步数增加
+    // }
     
-    return false; // 没有检测到步伐
+    // return false; // 没有检测到步伐
 }
 
 //UI界面显示
@@ -229,8 +262,9 @@ void Ex2_4_mems()
 
 			// 检测是否有步伐
 			if (window_index == WINDOW_SIZE - 1) { // 窗口填满，可以进行步伐检测
-                if (detect_step()) {
+                if (detect_step(sys_tick_counter)) {
                     step_count++; // 增加步数
+					step_flag=5000;
                 }
             }
 
